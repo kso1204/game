@@ -68,6 +68,7 @@
                                     <a class="dropdown-item" href="{{route('home')}}">profile</a>
                                     <a class="dropdown-item" href="{{route('stage')}}">Stage</a>
                                     <a class="dropdown-item" href="{{route('setting')}}">Ranking</a>
+                                    <a class="dropdown-item" href="{{route('rule')}}">Rule</a>
                                 </div>
                             </li>
                         @endguest

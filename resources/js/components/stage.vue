@@ -77,6 +77,8 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Stage</div>
+                    
+
 
                     <div class="card-body">
                         <div class="row" style="margin-top:20px;">

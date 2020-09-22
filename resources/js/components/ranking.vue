@@ -19,54 +19,20 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-3">Level</div>
+                                <div class="col-3">Email</div>
                                 <div class="col-9">
-                                    <label>{{data.level}}</label>
+                                    <label>{{data.email}}</label>
                                 </div>
                             </div>
                             
                             <div class="row">
-                                <div class="col-3">Exp</div>
+                                <div class="col-3">Score</div>
                                 <div class="col-9">
-                                    <label>{{data.exp}}</label>
-                                </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="col-3">hp</div>
-                                <div class="col-9">
-                                    <label>{{data.hp}}</label>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-3">Die Count</div>
-                                <div class="col-9">
-
-                                    <label>{{data.die}}</label>
-
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-3">Count</div>
-                                <div class="col-9">
-
-                                    <label>{{data.cnt}}</label>
-
+                                    <label>{{data.score}}</label>
                                 </div>
                             </div>
 
                             
-
-                            <div class="row">
-                                <div class="col-3">Reset Count</div>
-                                <div class="col-9">
-
-                                    <label>{{data.reset}}</label>
-
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -86,15 +52,27 @@
             return {
                 users :{
 
-                },
-                isAttack:false,
+                }
             }
         },
         
         async created(){
-            const res = await this.callApi('get', 'app/get_user')
-            console.log(res)
-            this.users = res.data;
+                /* 
+            const [user, record] = await Promise.all([
+                this.callApi('get', '/app/get_user'), //경로
+                this.callApi('get', '/app/get_record'),
+            ])
+            if(user.status==200){
+                this.users = user.data
+                this.records = record.data
+            }else{
+                this.swr()
+            } */
+
+            const record = await this.callApi('get','app/get_record')
+
+            this.users=record.data
+
         },
 
     }

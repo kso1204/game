@@ -2074,65 +2074,29 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: {},
-      isAttack: false
+      users: {}
     };
   },
   created: function created() {
     var _this = this;
 
     return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-      var res;
+      var record;
       return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return _this.callApi('get', 'app/get_user');
+              return _this.callApi('get', 'app/get_record');
 
             case 2:
-              res = _context.sent;
-              console.log(res);
-              _this.users = res.data;
+              record = _context.sent;
+              _this.users = record.data;
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -2161,6 +2125,8 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
+//
+//
 //
 //
 //
@@ -85305,50 +85271,18 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-3" }, [_vm._v("Level")]),
+                  _c("div", { staticClass: "col-3" }, [_vm._v("Email")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.level))])
+                    _c("label", [_vm._v(_vm._s(data.email))])
                   ])
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-3" }, [_vm._v("Exp")]),
+                  _c("div", { staticClass: "col-3" }, [_vm._v("Score")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.exp))])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-3" }, [_vm._v("hp")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.hp))])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-3" }, [_vm._v("Die Count")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.die))])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-3" }, [_vm._v("Count")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.cnt))])
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col-3" }, [_vm._v("Reset Count")]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.reset))])
+                    _c("label", [_vm._v(_vm._s(data.score))])
                   ])
                 ])
               ]

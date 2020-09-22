@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Level;
+use App\Models\Record;
 use Illuminate\Http\Request;
 
 class AttackController extends Controller
 {
     //
+
     
     public function hpPerLevel($level){
         return Level::where('level',$level)->get()->pluck('hp');
@@ -30,10 +32,15 @@ class AttackController extends Controller
                 'die' => $request->die,
             ]
         );
+        
     }   
     public function userGet(Request $request){
         return User::where('id',$request->id)->get();
     }   
+
+    
+  
+
     public function reset(Request $request)
     {   
 
@@ -57,14 +64,55 @@ class AttackController extends Controller
         ]);
 
     }
+
+    public function save(Request $request)
+    {
+        
+        $user = $this->userGet($request);
+
+        if($request->exp>$request->high_record){
+            $request->high_record = $request->exp;
+        }
+        
+        Record::create(
+            [
+                'user_id'=>$request->id,
+                'score'=>$request->exp,
+            ]
+        );
+
+        User::where('id', $request->id)->update(
+            [
+                'level'=> 1,
+                'exp'=> 0,
+                'hp'=> 50,
+                'cnt' => 0,
+                'die' => 0,
+                'reset' => $request->reset+1,
+            ]
+        );
+    }
+
     public function heal(Request $request)
     {   
 
-        $request->hp += rand(5,15);
+        $cnt=1;
+        if($request->level>3){
+            $cnt=2;
+        }else if($request->level>6){
+            $cnt=3;
+        }else if($request->level>8){
+            $cnt=4;
+        }
+
+        $minusHp = rand(5,30)*$cnt;
+
+        $request->hp += $minusHp;
 
         $maxHp=$this->hpPerLevel($request->level)[0];
 
-        $msg="Healing";
+        
+        $msg="Healing\n Hp + ".$minusHp;
 
         if($request->hp>=$maxHp)
         {
@@ -76,6 +124,13 @@ class AttackController extends Controller
         $this->userUpdate($request);
 
         $user = $this->userGet($request);
+
+        
+        if($request->cnt>=99){
+            $this->save($request);
+            $user = $this->userGet($request);
+            $msg="End Game!! Your score is recorded";
+        }
         
         return response()->json([
             'msg' => $msg,
@@ -95,10 +150,12 @@ class AttackController extends Controller
             $cnt=4;
         }
 
-        $request->exp += rand(1,5)*$cnt;
-        $request->hp -= rand(5,15)*$cnt;
+        $plusExp = rand(1,5)*$cnt;
+        $minusHp = rand(5,15)*$cnt;
+        $request->exp += $plusExp;
+        $request->hp -= $minusHp;
 
-        $msg="Attack Success!!";
+        $msg="Attack Success!!\n Exp +".$plusExp."\n Hp - ".$minusHp;
         
         if($request->hp<=0){
             if($request->level>1){
@@ -123,6 +180,13 @@ class AttackController extends Controller
 
         $this->userUpdate($request);
         $user = $this->userGet($request);
+
+        
+        if($request->cnt>=99){
+            $this->save($request);
+            $user = $this->userGet($request);
+            $msg="End Game!! Your score is recorded";
+        }
         
         return response()->json([
             'msg' => $msg,
@@ -142,11 +206,13 @@ class AttackController extends Controller
             $cnt=4;
         }
 
-        $request->exp += rand(3,10)*$cnt;
-        $request->hp -= rand(10,30)*$cnt;
         
+        $plusExp = rand(3,10)*$cnt;
+        $minusHp = rand(10,30)*$cnt;
+        $request->exp += $plusExp;
+        $request->hp -= $minusHp;
 
-        $msg="Skill Success!!";
+        $msg="Skill Success!!\n Exp +".$plusExp."\n Hp - ".$minusHp;
         
         if($request->hp<=0){
             if($request->level>1){
@@ -171,6 +237,13 @@ class AttackController extends Controller
 
         $user = $this->userGet($request);
         
+        
+        if($request->cnt>=99){
+            $this->save($request);
+            $user = $this->userGet($request);
+            $msg="End Game!! Your score is recorded";
+        }
+
         return response()->json([
             'msg' => $msg,
             'user' => $user,
@@ -189,11 +262,17 @@ class AttackController extends Controller
             $cnt=4;
         }
 
-        $request->exp += rand(5,20)*$cnt;
-        $request->hp -= rand(20,50)*$cnt;
+        
+        
+        $plusExp = rand(5,20)*$cnt;
+        $minusHp = rand(20,50)*$cnt;
+        $request->exp += $plusExp;
+        $request->hp -= $minusHp;
         
 
-        $msg="Skill Success!!";
+        
+
+        $msg="Skill Success!!\n Exp +".$plusExp."\n Hp - ".$minusHp;
         
         if($request->hp<=0){
             if($request->level>1){
@@ -218,6 +297,13 @@ class AttackController extends Controller
 
         $user = $this->userGet($request);
         
+        
+        if($request->cnt>=99){
+            $this->save($request);
+            $user = $this->userGet($request);
+            $msg="End Game!! Your score is recorded";
+        }
+
         return response()->json([
             'msg' => $msg,
             'user' => $user,
@@ -237,13 +323,22 @@ class AttackController extends Controller
             $cnt=4;
         }
 
-        $request->exp += rand(10,40)*$cnt;
-        $request->hp -= rand(35,80)*$cnt;
+
+        
+        
+        $plusExp = rand(10,40)*$cnt;
+        $minusHp = rand(35,80)*$cnt;
+        $request->exp += $plusExp;
+        $request->hp -= $minusHp;
+        
+
+        
+
+        $msg="Skill Success!!\n Exp +".$plusExp."\n Hp - ".$minusHp;
+
         
         
 
-        $msg="Skill Success!!";
-        
         if($request->hp<=0){
             if($request->level>1){
                 $request->level=$request->level-1;
@@ -267,6 +362,13 @@ class AttackController extends Controller
 
         $user = $this->userGet($request);
         
+        
+        if($request->cnt>=99){
+            $this->save($request);
+            $user = $this->userGet($request);
+            $msg="End Game!! Your score is recorded";
+        }
+
         return response()->json([
             'msg' => $msg,
             'user' => $user,
@@ -286,11 +388,21 @@ class AttackController extends Controller
             $cnt=4;
         }
 
-        $request->exp += rand(20,100)*$cnt;
-        $request->hp -= rand(60,150)*$cnt;
+        
+        
+        $plusExp = rand(20,100)*$cnt;
+        $minusHp = rand(60,150)*$cnt;
+        $request->exp += $plusExp;
+        $request->hp -= $minusHp;
         
 
-        $msg="Skill Success!!";
+        
+
+        $msg="Skill Success!!\n Exp +".$plusExp."\n Hp - ".$minusHp;
+
+        
+        
+
         
         if($request->hp<=0){
             if($request->level>1){
@@ -314,6 +426,13 @@ class AttackController extends Controller
         $this->userUpdate($request);
 
         $user = $this->userGet($request);
+        
+        
+        if($request->cnt>=99){
+            $this->save($request);
+            $user = $this->userGet($request);
+            $msg="End Game!! Your score is recorded";
+        }
         
         return response()->json([
             'msg' => $msg,

@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\AttackController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\AttackController;
+use App\Http\Controllers\RecordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,11 +18,13 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
+    //dd(url('/')); ?? 이거 하니까 갑자기 됨?
     return view('welcome');
 });
 
 Auth::routes();
 
+Route::get('/rule', [HomeController::class, 'rule'])->name('rule');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 Route::get('/stage',[HomeController::class, 'stage'])->name('stage'); 
 Route::get('/setting',[HomeController::class, 'setting'])->name('setting');
@@ -35,3 +38,6 @@ Route::post('app/heal',[AttackController::class, 'heal'])->name('heal');
 Route::post('app/reset',[AttackController::class, 'reset'])->name('reset');
 
 Route::get('app/get_user',[UserController::class, 'getUser']);
+
+
+Route::get('app/get_record',[RecordController::class, 'getRecord']);
