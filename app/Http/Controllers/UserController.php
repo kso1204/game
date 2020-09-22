@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     //
-    public function getUser(Request $request, $id)
+    public function getUser(Request $request)
     {
-        return User::where('id',$id)->get();
+        return User::orderBy('exp','desc')->take(10)->get();
     }
 }

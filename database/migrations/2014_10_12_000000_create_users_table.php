@@ -19,6 +19,8 @@ class CreateUsersTable extends Migration
             $table->integer('level')->default(1);
             $table->integer('exp')->default(0);
             $table->integer('hp')->default(100);
+            $table->integer('die')->default(0);
+            $table->integer('reset')->default(0);
             $table->string('type')->default('sword');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();

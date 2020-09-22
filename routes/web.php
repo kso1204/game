@@ -27,5 +27,11 @@ Route::get('/stage',[HomeController::class, 'stage'])->name('stage');
 Route::get('/setting',[HomeController::class, 'setting'])->name('setting');
 
 Route::post('app/attack',[AttackController::class, 'attack'])->name('attack');
+Route::post('app/skillOne',[AttackController::class, 'skillOne'])->name('skillOne');
+Route::post('app/skillTwo',[AttackController::class, 'skillTwo'])->name('skillTwo');
+Route::post('app/skillThree',[AttackController::class, 'skillThree'])->name('skillThree');
+Route::post('app/skillFour',[AttackController::class, 'skillFour'])->name('skillFour');
+Route::post('app/heal',[AttackController::class, 'heal'])->name('heal');
+Route::post('app/reset',[AttackController::class, 'reset'])->name('reset');
 
-Route::get('app/get_user/{id}',[UserController::class, 'getUser']);
+Route::get('app/get_user',[UserController::class, 'getUser']);
