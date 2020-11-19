@@ -68,3 +68,19 @@ public static function getHp($level){
 ```
 이렇게 바꿔서 사용하려고 하는데 이정도면 그래도 좀 괜찮은 것 같다.
 
+4. 요청에 대한 처리와 기존 사용자 정보에 대해서 어떻게 나누어야 할지 잘 모르겠다.
+원래 기존 소스는 $request에 user data를 다 넘겨서 왔기 때문에, $request자체를 사용했는데
+이 상태에서 사용하는 게 맞는건지? 아니면 user를 새로 가져오는 게 더 좋은건지..?
+user를 새로 가져온다면 request가 의미가 있는건가?.. 이런 궁금증이 생긴다
+
+```
+private $hp;
+private $user;
+
+public function __construct(Request $request){
+    $this->hp = Level::getHp($request->level);
+    $this->user = Auth()->user();
+}
+```
+
+새로운 내용을 배웠지만.. 기존 내용에 변화를 주는 건 너무 어렵다
