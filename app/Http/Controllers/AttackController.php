@@ -10,9 +10,16 @@ use Illuminate\Http\Request;
 class AttackController extends Controller
 {
     //
+    private $hp;
+    private $user;
 
+    public function __construct(Request $request){
+        $this->hp = Level::getHp($request->level);
+        $this->user = Auth()->user();
+    }
     
     public function hpPerLevel($level){
+        
         return Level::where('level',$level)->get()->pluck('hp');
     }   
 
@@ -95,7 +102,11 @@ class AttackController extends Controller
 
     public function heal(Request $request)
     {   
+        
+       // dd($this->hp);
+        dd($this->user);
 
+/* 
         $cnt=1;
         if($request->level>3){
             $cnt=2;
@@ -135,7 +146,7 @@ class AttackController extends Controller
         return response()->json([
             'msg' => $msg,
             'user' => $user,
-        ]);
+        ]); */
 
     }
     public function attack(Request $request)
