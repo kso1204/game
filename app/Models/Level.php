@@ -10,14 +10,14 @@ class Level extends Model
     use HasFactory;
 
     public static function getHp($level){
-        return Level::where('level',$level)->get()->pluck('hp');
+        return Level::where('level',$level)->value('hp');
     }
 
     public static function getExp($level){
-        return Level::where('level',$level)->get()->pluck('exp');
+        return Level::where('level',$level)->value('exp');
     }
 
     public static function isLevelUp($exp){
-        return Level::where('exp','>',$exp)->get()->pluck('level');
+        return Level::where('exp','>',$exp)->value('level');
     }
 }

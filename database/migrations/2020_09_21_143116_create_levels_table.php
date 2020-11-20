@@ -16,8 +16,8 @@ class CreateLevelsTable extends Migration
         Schema::create('levels', function (Blueprint $table) {
             $table->id();
             $table->integer('level')->default(1);
-            $table->integer('exp')->default(10);
-            $table->integer('hp')->default(100);
+            $table->integer('exp')->default(100);
+            $table->integer('hp')->default(50);
             $table->timestamps();
         });
     }

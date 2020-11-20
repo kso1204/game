@@ -175,7 +175,7 @@
                 if(res.status==200)
                 {
                       this.i(res.data.msg);      
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false     
                 }
                 else{
@@ -189,13 +189,8 @@
                 if(res.status==200)
                 {
                       this.i(res.data.msg);     
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false     
-                        /* const res2 = await this.callApi('get', `app/get_user/${this.id}`)
-                        if(res2.status==200)
-                        {
-                            this.data=res2.data[0]
-                        }     */ 
                 }
                 else{
                     this.swr();
@@ -209,7 +204,7 @@
                 {
                             
                       this.i(res.data.msg);     
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false      
                 }
                 else{
@@ -224,7 +219,7 @@
                 {
                             
                       this.i(res.data.msg);     
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false      
                 }
                 else{
@@ -240,7 +235,7 @@
                 {
                             
                       this.i(res.data.msg);     
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false      
                 }
                 else{
@@ -255,7 +250,7 @@
                 if(res.status==200)
                 {
                       this.i(res.data.msg);     
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false      
                 }
                 else{
@@ -269,7 +264,7 @@
                 if(res.status==200)
                 {
                       this.i(res.data.msg);     
-                      this.data=res.data.user[0]; 
+                      this.data=res.data.user; 
                       this.isAttack = false      
                 }
                 else{

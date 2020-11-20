@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->integer('level')->default(1);
             $table->integer('exp')->default(0);
-            $table->integer('hp')->default(100);
+            $table->integer('hp')->default(50);
             $table->integer('die')->default(0);
             $table->integer('cnt')->default(0);
             $table->integer('reset')->default(0);

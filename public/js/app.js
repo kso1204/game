@@ -2304,7 +2304,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this.i(res.data.msg);
 
-                  _this.data = res.data.user[0];
+                  _this.data = res.data.user;
                   _this.isAttack = false;
                 } else {
                   _this.swr();
@@ -2337,13 +2337,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this2.i(res.data.msg);
 
-                  _this2.data = res.data.user[0];
+                  _this2.data = res.data.user;
                   _this2.isAttack = false;
-                  /* const res2 = await this.callApi('get', `app/get_user/${this.id}`)
-                  if(res2.status==200)
-                  {
-                      this.data=res2.data[0]
-                  }     */
                 } else {
                   _this2.swr();
                 }
@@ -2375,7 +2370,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this3.i(res.data.msg);
 
-                  _this3.data = res.data.user[0];
+                  _this3.data = res.data.user;
                   _this3.isAttack = false;
                 } else {
                   _this3.swr();
@@ -2408,7 +2403,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this4.i(res.data.msg);
 
-                  _this4.data = res.data.user[0];
+                  _this4.data = res.data.user;
                   _this4.isAttack = false;
                 } else {
                   _this4.swr();
@@ -2441,7 +2436,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this5.i(res.data.msg);
 
-                  _this5.data = res.data.user[0];
+                  _this5.data = res.data.user;
                   _this5.isAttack = false;
                 } else {
                   _this5.swr();
@@ -2474,7 +2469,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this6.i(res.data.msg);
 
-                  _this6.data = res.data.user[0];
+                  _this6.data = res.data.user;
                   _this6.isAttack = false;
                 } else {
                   _this6.swr();
@@ -2507,7 +2502,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status == 200) {
                   _this7.i(res.data.msg);
 
-                  _this7.data = res.data.user[0];
+                  _this7.data = res.data.user;
                   _this7.isAttack = false;
                 } else {
                   _this7.swr();
@@ -99527,8 +99522,8 @@ vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_1__
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/lol/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/lol/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\pc11\php\src\game\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\pc11\php\src\game\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
