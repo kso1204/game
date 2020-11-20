@@ -43,6 +43,9 @@ if($request->level>3){
 }
 ```
 
+Difficulty 테이블을 만들어서 각 레벨에 대한 difficulty값을 넣었다..
+level_id가 1일때 difficulty도 1이게..? 이렇게 하는게 아닌 것 같은데
+
 3. 각 행동(Action)에 대해서 어떻게 처리하는 게 좋을지? 현재는 HP를 회복하는 경우 
 
 ```

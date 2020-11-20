@@ -16,6 +16,7 @@ class CreateDifficultiesTable extends Migration
         Schema::create('difficulties', function (Blueprint $table) {
             $table->id();
             $table->foreignId('level_id');
+            $table->integer('difficulty');
             $table->timestamps();
         });
     }
