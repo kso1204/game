@@ -6,16 +6,16 @@ use App\Models\User;
 use App\Models\Record;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Resources\RecordResource;
+use App\Http\Resources\RecordCollection;
 
 class RecordController extends Controller
 {
     //
     public function getRecord()
     {
-        $record=Record::find(1);
+        $record=Record::orderBy('score','desc')->take(10)->get();
         
-        return new RecordResource($record);
+        return new RecordCollection(Auth()->user()->records);
 
 
         

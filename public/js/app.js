@@ -2077,7 +2077,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      users: {}
+      records: {}
     };
   },
   created: function created() {
@@ -2094,7 +2094,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
             case 2:
               record = _context.sent;
-              _this.users = record.data;
+              _this.records = record.data; //this.users=record.data
 
             case 4:
             case "end":
@@ -85240,13 +85240,13 @@ var render = function() {
         [
           _c("div", { staticClass: "card-header" }, [_vm._v("Ranking")]),
           _vm._v(" "),
-          _vm._l(_vm.users, function(data, i) {
+          _vm._l(_vm.records.data, function(record, i) {
             return _c(
               "div",
               {
                 key: i,
                 staticClass: "card-body",
-                attrs: { "v-if": _vm.users.length }
+                attrs: { "v-if": _vm.records.length }
               },
               [
                 _c("div", { staticClass: "row" }, [
@@ -85261,7 +85261,13 @@ var render = function() {
                   _c("div", { staticClass: "col-3" }, [_vm._v("Name")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.name))])
+                    _c("label", [
+                      _vm._v(
+                        _vm._s(
+                          record.data.attributes.users.data.attributes.name
+                        )
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -85269,7 +85275,13 @@ var render = function() {
                   _c("div", { staticClass: "col-3" }, [_vm._v("Email")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.email))])
+                    _c("label", [
+                      _vm._v(
+                        _vm._s(
+                          record.data.attributes.users.data.attributes.email
+                        )
+                      )
+                    ])
                   ])
                 ]),
                 _vm._v(" "),
@@ -85277,7 +85289,7 @@ var render = function() {
                   _c("div", { staticClass: "col-3" }, [_vm._v("Score")]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-9" }, [
-                    _c("label", [_vm._v(_vm._s(data.score))])
+                    _c("label", [_vm._v(_vm._s(record.data.attributes.score))])
                   ])
                 ])
               ]

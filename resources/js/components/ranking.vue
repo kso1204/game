@@ -5,7 +5,7 @@
                     <div class="card">
                         <div class="card-header">Ranking</div>
                         
-                        <div class="card-body" v-for="(data,i) in users" :key="i" :v-if="users.length">
+                        <div class="card-body" v-for="(record,i) in records.data" :key="i" :v-if="records.length">
                             <div class="row">
                                 <div class="col-3">Ranking No.</div>
                                 <div class="col-9" >
@@ -15,20 +15,20 @@
                             <div class="row">
                                 <div class="col-3">Name</div>
                                 <div class="col-9" >
-                                    <label>{{data.name}}</label>
+                                    <label>{{record.data.attributes.users.data.attributes.name}}</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-3">Email</div>
                                 <div class="col-9">
-                                    <label>{{data.email}}</label>
+                                    <label>{{record.data.attributes.users.data.attributes.email}}</label>
                                 </div>
                             </div>
                             
                             <div class="row">
                                 <div class="col-3">Score</div>
                                 <div class="col-9">
-                                    <label>{{data.score}}</label>
+                                    <label>{{record.data.attributes.score}}</label>
                                 </div>
                             </div>
 
@@ -50,7 +50,7 @@
 
         data(){
             return {
-                users :{
+                records :{
 
                 }
             }
@@ -70,8 +70,11 @@
             } */
 
             const record = await this.callApi('get','app/get_record')
+            this.records = record.data
+            
+            //this.users=record.data
 
-            this.users=record.data
+            
 
         },
 
