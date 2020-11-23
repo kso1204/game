@@ -12,6 +12,24 @@ AWS에 구현했으나, 현재 Key를 분실하여.. 찾으면 시스템 점검�
 
 이것저것 찾아봤더니 프로그램 단점이 너무 많이 보임!
 
+개선 사항
+
+1. ranking data를 가져올 때 테이블 간 조인을 사용해서 가져왔는데, 이 부분을 resource, collection을 통하여 데이터를
+
+가져오게 수정했고 그러기위해 relation을 추가했다. 
+
+collection에서 this->collection하면 Resource데이터 가져왔던 것으로 기억하는데, 이 부분이 계속 안돼서..ㅠ
+
+기존 내용과 비교했더니 파일명을 RecordResource이런식으로 만들어서 안 되던 것..
+
+이 부분을 다시 Record로 수정했더니 정상적으로 데이터를 가져왔다.
+
+Ranking.vue에서 array형태로 데이터가 안 가져와서 보니까.. v-for에서 records.data를 선언하지 않고
+
+records만 선언해서 데이터를 정상적으로 못 가져왔던 것.
+
+2. 데이터를 업데이트 할 때 큐를 사용해보기..? ranking 부분에 redis 사용해보기?
+
 핵심 요구사항
 
 1. 백 번 하면 레코드 기록 + 초기화
