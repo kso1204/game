@@ -11,11 +11,21 @@ use App\Http\Resources\RecordCollection;
 class RecordController extends Controller
 {
     //
+    private $key = "secret";
+    private $redis;
+
     public function getRecord()
     {
+        $this->redis = new \Redis();
+        $this->redis->connect(config('database.redis.default.host'), config('database.redis.default.port'));
+        $this->redis->auth(['secret']);
+
+        $range = $this->redis->zRange($this->key, 0, 10, true);
+
         $record=Record::orderBy('score','desc')->take(10)->get();
         
-        return new RecordCollection(Auth()->user()->records);
+        
+        return new RecordCollection($record);
 
 
         

@@ -18,12 +18,19 @@ class AttackController extends Controller
     private $difficulty;
     private $cnt;
     private $msg;
+    private $redis;
+    private $key = "secret";
+
 
     public function __construct(Request $request){
         $this->cnt = $request->cnt + 1;
         $this->maxHp = Level::getHp($request->level);
         $this->difficulty = Difficulty::getDifficulty($request->level);
         $this->user = Auth()->user();
+
+        $this->redis = new \Redis();
+        $this->redis->connect(config('database.redis.default.host'), config('database.redis.default.port'));
+        $this->redis->auth(['secret']);
     }
     
     public function hpPerLevel($level){
@@ -134,6 +141,7 @@ class AttackController extends Controller
             ]
         );
 
+
         User::where('id', $request->id)->update(
             [
                 'level'=> 1,
@@ -166,7 +174,7 @@ class AttackController extends Controller
         }
 
         $this->userUpdate($request);
-        
+
 
         return response()->json([
             'msg' => $this->msg,

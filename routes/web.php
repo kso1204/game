@@ -1,5 +1,10 @@
 <?php
 
+use App\Events\TestEvent;
+use App\Jobs\WelcomeEmailJob;
+use App\Mail\SendEmailMailable;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Redis;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -23,6 +28,30 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+
+Route::get('/fire', function () {
+    broadcast(new TestEvent);
+    return 'ok';
+});
+
+Route::get('sendEmail',function(){
+
+    
+    //Queue::push(new WelcomeEmailJob());
+
+    //Mail::to('kso1204@geni-pco.com')->send(new SendEmailMailable());
+    
+    /* $job = (new SendEmailJob())->delay(Carbon::now()->addSeconds(10));
+    dispatch($job); */
+    //Log::info("asdf");
+
+    /* WelcomeEmailJob::dispatch()->delay(now()->addSecond(3)); */
+    //WelcomeEmailJob::dispatch()->delay(now()->addSecond(3));
+
+    return 'Email is Send Properly';
+});
+
+    
 
 Route::get('/rule', [HomeController::class, 'rule'])->name('rule');
 Route::get('/home', [HomeController::class, 'index'])->name('home');
