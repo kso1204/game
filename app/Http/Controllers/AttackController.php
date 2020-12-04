@@ -59,7 +59,7 @@ class AttackController extends Controller
 
             } else {
                 $request->hp = Level::getHp($request->level);
-                $request->exp = Level::getExp($request->level);
+                $request->exp = Level::getExp($request->level-1);
             }
 
 
