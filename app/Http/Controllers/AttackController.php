@@ -161,17 +161,28 @@ class AttackController extends Controller
 
         //dd($this->user);
 
-        $this->updateHp= rand(10,60) * $this->difficulty;
+        $random_num = rand(10,80);
 
-        $request->hp += $this->updateHp;
+        if ($random_num>=76) {  
 
-        
-        $this->msg="Healing\n Hp + ".$this->updateHp;
-
-        if($request->hp>=$this->maxHp){
             $request->hp=$this->maxHp;
-            $this->msg="Your Hp is Full";
+            $this->msg="Great Heal!! Your Hp is Full";
+
+        } else {
+            $this->updateHp= $random_num * $this->difficulty;
+
+            $request->hp += $this->updateHp;
+
+            
+            $this->msg="Healing\n Hp + ".$this->updateHp;
+
+            if($request->hp>=$this->maxHp){
+                $request->hp=$this->maxHp;
+                $this->msg="Your Hp is Full";
+            }
         }
+        
+
 
         $this->userUpdate($request);
 
