@@ -161,7 +161,7 @@ class AttackController extends Controller
 
         //dd($this->user);
 
-        $this->updateHp= rand(5,30) * $this->difficulty;
+        $this->updateHp= rand(10,60) * $this->difficulty;
 
         $request->hp += $this->updateHp;
 
