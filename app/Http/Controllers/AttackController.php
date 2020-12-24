@@ -141,6 +141,8 @@ class AttackController extends Controller
             ]
         );
 
+        event(new UserSubscribed($request->exp));
+
 
         User::where('id', $request->id)->update(
             [

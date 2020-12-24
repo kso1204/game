@@ -38,4 +38,8 @@ class RecordController extends Controller
         ->leftJoin('users','users.id','=','records.user_id')
         ->orderBy('score','desc')->take(10)->get(); */
     }
+
+    public function delete(){
+        return dd("asd");
+    }
 }

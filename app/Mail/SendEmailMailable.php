@@ -26,8 +26,8 @@ class SendEmailMailable extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build($user)
     {
-        return $this->view('welcome');
+        return $this->view('mail',$user);
     }
 }

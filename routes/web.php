@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\User;
 use App\Events\TestEvent;
 use App\Jobs\WelcomeEmailJob;
+use App\Events\UserSubscribed;
 use App\Mail\SendEmailMailable;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redis;
@@ -36,6 +38,8 @@ Route::get('/fire', function () {
 
 Route::get('sendEmail',function(){
 
+    $user = User::first();
+    event(new UserSubscribed($user));
     
     //Queue::push(new WelcomeEmailJob());
 
@@ -48,7 +52,7 @@ Route::get('sendEmail',function(){
     /* WelcomeEmailJob::dispatch()->delay(now()->addSecond(3)); */
     //WelcomeEmailJob::dispatch()->delay(now()->addSecond(3));
 
-    return 'Email is Send Properly';
+    //return 'Email is Send Properly';
 });
 
     
