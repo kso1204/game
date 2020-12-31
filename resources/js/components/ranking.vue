@@ -53,7 +53,9 @@
             return {
                 records :{
 
-                }
+                },
+
+                recordId,
             }
         },
         
@@ -81,8 +83,8 @@
 
         methods: {
             async deleting(data){
-                
-                 const res = await this.callApi('post', 'api/record/delete',data)
+                recordId = data.data.record_id;
+                 const res = await this.callApi('delete', 'api/record/delete',{'record_id': recordId})
 
                 if(res.status==200)
                 {

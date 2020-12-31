@@ -2078,7 +2078,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      records: {}
+      records: {},
+      recordId: recordId
     };
   },
   created: function created() {
@@ -2115,10 +2116,13 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           while (1) {
             switch (_context2.prev = _context2.next) {
               case 0:
-                _context2.next = 2;
-                return _this2.callApi('post', 'api/record/delete', data);
+                recordId = data.data.record_id;
+                _context2.next = 3;
+                return _this2.callApi('delete', 'api/record/delete', {
+                  'record_id': recordId
+                });
 
-              case 2:
+              case 3:
                 res = _context2.sent;
 
                 if (res.status == 200) {
@@ -2127,7 +2131,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   _this2.swr();
                 }
 
-              case 4:
+              case 5:
               case "end":
                 return _context2.stop();
             }

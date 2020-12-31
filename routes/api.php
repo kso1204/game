@@ -15,15 +15,18 @@ use App\Http\Controllers\RecordController;
 |
 */
 
+/* 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
 
 
 Route::middleware('auth:api')->group(function () {
 
     Route::apiResources([
-        '/record/delete' => RecordController::class,
+        '/record' => RecordController::class,
     ]);
+
+   /*  Route::post('/record',[RecordController::class,'delete']); */
 
 });

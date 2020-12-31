@@ -39,7 +39,9 @@ class RecordController extends Controller
         ->orderBy('score','desc')->take(10)->get(); */
     }
 
-    public function delete(){
-        return dd("asd");
+    public function destroy(){
+
+        return Record::where('id',request()->record_id)->delete();
+        
     }
 }
