@@ -82,6 +82,8 @@ HP가 0보다 작아지면서 LEVEL이 감소되고 그에 맞는 EXP로 초기�
 
 서비스 - 리포지터리 : https://dev.to/jsafe00/implement-crud-with-laravel-service-repository-pattern-1dkl
 
+서비스 - 리포지터리 : https://stackoverflow.com/questions/60029955/when-to-use-repository-vs-service-vs-trait-in-laravel
+
 interface에 구현되어야 하는 기능들..?
 
 Reset
@@ -89,5 +91,12 @@ Reset
 Save
 
 Heal
+
+User의 데이터를 변화시키는 행동인데 Attack이라는 컨트롤러가 필요할까?
+
+여기서부터 접근이 잘못된 것 같다.
+
+AttackRepository가 아니라.. UserRepository와 UserService로 접근을 한다면?
+
 
 
