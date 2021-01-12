@@ -98,5 +98,7 @@ User의 데이터를 변화시키는 행동인데 Attack이라는 컨트롤러�
 
 AttackRepository가 아니라.. UserRepository와 UserService로 접근을 한다면?
 
+비즈니스 로직은 서비스..
+
 
 

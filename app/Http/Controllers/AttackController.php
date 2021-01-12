@@ -7,6 +7,7 @@ use App\Models\Level;
 use App\Models\Record;
 use App\Models\Difficulty;
 use Illuminate\Http\Request;
+use App\Services\UserService;
 
 class AttackController extends Controller
 {
@@ -20,17 +21,21 @@ class AttackController extends Controller
     private $msg;
     private $redis;
     private $key = "secret";
+    private $UserService;
 
 
-    public function __construct(Request $request){
-        $this->cnt = $request->cnt + 1;
+    public function __construct(UserService $UserService){
+
+        $this->UserService = $UserService;
+
+       /*  $this->cnt = $request->cnt + 1;
         $this->maxHp = Level::getHp($request->level);
         $this->difficulty = Difficulty::getDifficulty($request->level);
         $this->user = Auth()->user();
 
         $this->redis = new \Redis();
         $this->redis->connect(config('database.redis.default.host'), config('database.redis.default.port'));
-        $this->redis->auth(['secret']);
+        $this->redis->auth(['secret']); */
     }
     
     public function hpPerLevel($level){
@@ -158,11 +163,13 @@ class AttackController extends Controller
 
     public function heal(Request $request)
     {   
+        dd($this->UserService);
         
+
        // dd($this->hp);
 
         //dd($this->user);
-
+/* 
         $random_num = rand(10,80);
 
         if ($random_num>=76) {  
@@ -192,7 +199,7 @@ class AttackController extends Controller
         return response()->json([
             'msg' => $this->msg,
             'user' => Auth()->user(),
-        ]); 
+        ]);  */
 
         //이걸 유저에서 처리한다고 하면..?
         //유저에서 heal인지 attack인지 이걸 다 같이 처리한다고 하면 결국 if문이 필요하다
